@@ -1,6 +1,6 @@
 """Tests for normalization utilities."""
 
-from reconflow.normalize import standardize_decimal, normalize_reference
+from reconflow.normalize import normalize_reference, standardize_decimal
 from reconflow.normalize.decimal import amounts_match
 
 

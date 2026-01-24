@@ -1,5 +1,6 @@
-id,created_on,transaction_reference,amount,status
-p1,2026-01-12T10:01:00+01:00,TRF|ABC|1001,10000,COMPLETED
-p1,2026-01-12T10:01:00+01:00,TRF|ABC|1001,10000,COMPLETED
-p2,2026-01-12T10:05:00+01:00,,25000,COMPLETED
-p3,2026-01-12T10:10:00+01:00,TRF|ABC|1003,not_a_number,COMPLETED
+date,reference,amount,description
+2026-01-14,TRF|MONIEPOINT|001|NGN,1000.007,Payment A - decimal issue
+2026-01-14,trf|moniepoint|002|ngn,2500.50,Payment B - case issue
+2026-01-14,TRF|MONIEPOINT|003|NGN,750.25,Payment C - OK
+2026-01-14,TRF|MONIEPOINT|006|NGN,999.99,Payment F - missing in CBA
+2026-01-14,TRF|MONIEPOINT|007|NGN,1500.00,Payment G - amount mismatch

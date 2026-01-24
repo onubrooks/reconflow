@@ -1,10 +1,11 @@
 """Tests for configuration loading and validation."""
 
-import pytest
 import tempfile
-from pathlib import Path
 
-from reconflow.config import load_config, ReconFlowConfig
+import pytest
+from pydantic import ValidationError
+
+from reconflow.config import load_config
 
 
 def test_load_minimal_config():
@@ -60,7 +61,7 @@ cba:
         f.write(config_yaml)
         f.flush()
 
-        with pytest.raises(Exception):  # ValidationError
+        with pytest.raises(ValidationError):
             load_config(f.name)
 
 

@@ -1,47 +1,22 @@
-name: CI
+version: "1"
+pipeline_name: "quickstart"
 
-on:
-  pull_request:
-    branches: [ "main" ]
-  push:
-    branches: [ "main" ]
+product:
+  path: "examples/quickstart/data/broken_product.csv"
+  date_field: "date"
+  reference_field: "reference"
+  amount_field: "amount"
 
-jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+cba:
+  path: "examples/quickstart/data/broken_cba.csv"
+  date_field: "date"
+  reference_field: "reference"
+  amount_field: "amount"
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
+matching:
+  strategy: "exact_reference"
+  amount_tolerance_abs: 0.01
+  normalize_reference: true
 
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip
-          pip install -e ".[dev]"
-
-      - name: Ruff
-        run: |
-          ruff check .
-          ruff format --check .
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-
-      - name: Install dependencies
-        run: |
-          python -m pip install -U pip
-          pip install -e ".[dev]"
-
-      - name: Pytest
-        run: |
-          pytest -q
+output:
+  run_dir: ".reconflow/runs"
